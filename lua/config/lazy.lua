@@ -38,4 +38,9 @@ lazy.setup {
 
     -- Automatically check for plugin updates
     checker = { enabled = false },
+
+    change_detection = {
+        enabled = false,
+        notify = false,
+    }
 }
