@@ -62,39 +62,42 @@ local lsp_keymaps = {
     { mode = "n", keymap = "]h",         action = next_hint,                 desc = "Next Hint" },
 }
 
-local function on_attach(client, bufnr)
-    -- LSP key bindings
-    for _, km in ipairs(lsp_keymaps) do
-        vim.keymap.set(
-            km.mode,
-            km.keymap,
-            km.action,
-            { buffer = bufnr, noremap = true, silent = true, desc = "[LSP]: " .. km.desc }
-        )
-    end
+local servers_dir = "lsp"
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(event)
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        local server_name = client.config.name
 
-    -- Format on save
-    if client.name == "ts_ls" then
-        -- TypeScript LSP should not handle formatting, prettier should
-        vim.api.nvim_create_autocmd("BufWritePost", {
-            pattern = { "*.js", "*.ts", "*.jsx", "*.tsx" },
-            callback = function()
-                vim.cmd("silent !prettier --write %")
-            end,
-        })
-    else
+        local server_dir = servers_dir .. "." .. server_name
+        local conf_ok, conf = pcall(require, server_dir)
+        if conf_ok then
+            client.filetypes = conf.filetypes or {}
+            client.settings = conf.settings or {}
+        end
+
+        -- LSP key bindings
+        for _, km in ipairs(lsp_keymaps) do
+            vim.keymap.set(
+                km.mode,
+                km.keymap,
+                km.action,
+                { buffer = event.buf, noremap = true, silent = true, desc = "[LSP]: " .. km.desc }
+            )
+        end
+
+        -- Format on save
         vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
+            buffer = event.buf,
             callback = function()
-                vim.lsp.buf.format()
+                vim.lsp.buf.format {
+                    filter = function(c) return c.name ~= "ts_ls" end
+                }
             end,
         })
     end
-end
+})
 
-local servers = { "rust_analyzer", "lua_ls", "ts_ls", "taplo" }
 local icons = require "config.icons"
-
 return {
     {
         "neovim/nvim-lspconfig",
@@ -114,18 +117,6 @@ return {
 
             mason.setup {}
             mason_lsp.setup {}
-
-            local servers_dir = "lsp"
-            for _, server in ipairs(servers) do
-                local server_dir = servers_dir .. "." .. server
-                local conf_ok, conf = pcall(require, server_dir)
-                vim.lsp.config(server, {
-                    capabilities = capabilities,
-                    on_attach = on_attach,
-                    settings = conf_ok and conf.settings or nil,
-                    filetypes = conf_ok and conf.filetypes or nil,
-                })
-            end
 
             vim.diagnostic.config {
                 -- disable virtual text

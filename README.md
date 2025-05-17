@@ -22,7 +22,7 @@ more than one buffer at a time.
 - [ ] A basic user guide would be nice
 - [x] nvim-autopairs doesn't work, parentheses and quotes are not autocompleted
 - [x] keybinds to move between windows actually move the windows themselves
-- [ ] lsp loads all configs upfront, instead of just the ones loaded into the buffer
+- [x] lsp loads all configs upfront, instead of just the ones loaded into the buffer
 - [x] `Gitsigns` toggle hunk in keybinds doesn't actually toggle hunks
 - [x] Add lsp-specific config file support
 - [x] Only enable mouse for left click
