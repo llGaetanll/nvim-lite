@@ -3,7 +3,8 @@ return {
         "llGaetanll/base16.nvim",
         priority = 1000,
         opts = {
-            theme = "everforest",
+            default_theme = "everforest",
+            on_change = require "highlights"
         },
     },
 }
