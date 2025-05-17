@@ -115,10 +115,15 @@ return {
             mason.setup {}
             mason_lsp.setup {}
 
+            local servers_dir = "lsp"
             for _, server in ipairs(servers) do
+                local server_dir = servers_dir .. "." .. server
+                local conf_ok, conf = pcall(require, server_dir)
                 vim.lsp.config(server, {
                     capabilities = capabilities,
                     on_attach = on_attach,
+                    settings = conf_ok and conf.settings or nil,
+                    filetypes = conf_ok and conf.filetypes or nil,
                 })
             end
 
