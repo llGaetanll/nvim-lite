@@ -26,5 +26,5 @@ more than one buffer at a time.
 - [x] `Gitsigns` toggle hunk in keybinds doesn't actually toggle hunks
 - [x] Add lsp-specific config file support
 - [x] Only enable mouse for left click
-- [ ] Configure file management keybinds in Telescope file browser 
+- [x] Configure file management keybinds in Telescope file browser 
 - [ ] Put **all** keybinds in keybinds file, and export them to the right places
