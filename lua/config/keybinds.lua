@@ -97,8 +97,8 @@ local keymaps = {
     { mode = "n",               keymap = "<leader>dh",      action = diffview_toggle_file_history,        desc = "[D]iffview File [H]istory", },
 
     -- Gitsigns
-    { mode = "n",               keymap = "[g",              action = "<cmd>Gitsigns next_hunk<CR>",       desc = "Next Hunk", },
-    { mode = "n",               keymap = "]g",              action = "<cmd>Gitsigns prev_hunk<CR>",       desc = "Previous Hunk", },
+    { mode = "n",               keymap = "[g",              action = "<cmd>Gitsigns prev_hunk<CR>",       desc = "[g]it Previous Hunk", },
+    { mode = "n",               keymap = "]g",              action = "<cmd>Gitsigns next_hunk<CR>",       desc = "[g]it Next Hunk", },
     { mode = "n",               keymap = "<leader>gs",      action = "<cmd>Gitsigns stage_hunk<CR>",      desc = "[g]it [s]tage hunk", },
     { mode = "n",               keymap = "<leader>gr",      action = "<cmd>Gitsigns reset_hunk<CR>",      desc = "[g]it [r]eset hunk", },
     { mode = "n",               keymap = "<leader>gS",      action = "<cmd>Gitsigns undo_stage_hunk<CR>", desc = "[g]it undo [S]tage hunk", },
