@@ -1,4 +1,3 @@
--- TODO: If Diffview is open in another tab, this won't close it
 local function diffview_toggle(cmd)
     local diffview_open = false
 
@@ -70,16 +69,16 @@ local keymaps = {
     { mode = "n",               keymap = "<C-Right>",       action = "<cmd>vertical resize +2<CR>",  desc = "Resize windows", },
 
     -- Navigate Panes
-    { mode = "n",               keymap = "<Up>",            action = "<C-w>k",                       desc = "Navigate to window above", },
-    { mode = "n",               keymap = "<Down>",          action = "<C-w>j",                       desc = "Navigate to window below", },
-    { mode = "n",               keymap = "<Left>",          action = "<C-w>h",                       desc = "Navigate to left window", },
-    { mode = "n",               keymap = "<Right>",         action = "<C-w>l",                       desc = "Navigate to right window", },
+    { mode = "n",               keymap = "<c-k>",           action = "<C-w>k",                       desc = "Navigate to window above", },
+    { mode = "n",               keymap = "<c-j>",           action = "<C-w>j",                       desc = "Navigate to window below", },
+    { mode = "n",               keymap = "<c-h>",           action = "<C-w>h",                       desc = "Navigate to left window", },
+    { mode = "n",               keymap = "<c-l>",           action = "<C-w>l",                       desc = "Navigate to right window", },
 
     -- Move Panes
-    { mode = "n",               keymap = "<c-k>",           action = "<C-w>K",                       desc = "Move window above", },
-    { mode = "n",               keymap = "<c-j>",           action = "<C-w>J",                       desc = "Move window below", },
-    { mode = "n",               keymap = "<c-h>",           action = "<C-w>H",                       desc = "Move window left", },
-    { mode = "n",               keymap = "<c-l>",           action = "<C-w>L",                       desc = "Move window right", },
+    { mode = "n",               keymap = "<Up>",            action = "<C-w>K",                       desc = "Move window above", },
+    { mode = "n",               keymap = "<Down>",          action = "<C-w>J",                       desc = "Move window below", },
+    { mode = "n",               keymap = "<Left>",          action = "<C-w>H",                       desc = "Move window left", },
+    { mode = "n",               keymap = "<Right>",         action = "<C-w>L",                       desc = "Move window right", },
 
     -- Clear search highlighting
     { mode = "n",               keymap = "<Esc>",           action = ":noh<CR>",                     desc = "clear search highlight", },
