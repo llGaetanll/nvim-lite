@@ -21,3 +21,5 @@ more than one buffer at a time.
 ## TODO
 - [ ] lsp loads all configs upfront, instead of just the ones loaded into the buffer
 - [ ] `Gitsigns` toggle hunk in keybinds doesn't actually toggle hunks
+- [ ] Add lsp-specific config file support
+- [ ] Only enable mouse for left click
