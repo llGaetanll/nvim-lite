@@ -71,6 +71,7 @@ return {
                         hide_parent_dir = true,
                         grouped = true,
                         sorting_strategy = "ascending",
+                        initial_mode = "normal",
                         mappings = {
                             ["i"] = {},
                             ["n"] = {
