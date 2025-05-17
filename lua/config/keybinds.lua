@@ -106,7 +106,7 @@ local keymaps = {
     -- Telescope
     { mode = "n",               keymap = "<leader>t",       action = telescope_file_browser,              desc = "Telescope File Browser", },
     { mode = "n",               keymap = "<leader>f",       action = telescope_find_files,                desc = "Telescope [f]ile Search", },
-    { mode = "n",               keymap = "<leader>g",       action = telescope_live_grep,                 desc = "Telescope [g]rep Search", },
+    { mode = "n",               keymap = "<leader>l",       action = telescope_live_grep,                 desc = "Telescope [l]ive Grep", },
     { mode = "n",               keymap = "<leader>ut",      action = telescope_help_tags,                 desc = "Telescope [u]itl help [t]ags", },
     { mode = "n",               keymap = "<leader>uh",      action = telescope_highlights,                desc = "Telescope [u]til [h]ighlights", },
     { mode = "n",               keymap = "<leader>uk",      action = telescope_keymaps,                   desc = "Telescope [u]til [k]eybinds", },
