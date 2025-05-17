@@ -20,7 +20,7 @@ more than one buffer at a time.
 
 ## TODO
 - [ ] lsp loads all configs upfront, instead of just the ones loaded into the buffer
-- [ ] `Gitsigns` toggle hunk in keybinds doesn't actually toggle hunks
+- [x] `Gitsigns` toggle hunk in keybinds doesn't actually toggle hunks
 - [ ] Add lsp-specific config file support
 - [x] Only enable mouse for left click
 - [ ] Try taking out Telescope file browser. Maybe find files is all we need?
