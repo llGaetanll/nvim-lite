@@ -55,6 +55,14 @@ return {
                         preview_cutoff = 120,
                     },
                     file_ignore_patterns = { "node_modules" },
+                    mappings = {
+                        n = {
+                            ["R"] = telescope_refresh,
+                            ["i"] = telescope_vsplit,
+                            ["o"] = telescope_hsplit,
+                        },
+                        i = {}
+                    },
                 },
                 extensions = {
                     file_browser = {
@@ -68,17 +76,11 @@ return {
                             ["n"] = {
                                 ["l"] = "select_default",
                                 ["h"] = fb_actions.goto_parent_dir,
-
                                 ["H"] = fb_actions.toggle_hidden,
                                 ["I"] = fb_actions.toggle_respect_gitignore,
-                                ["R"] = telescope_refresh,
-
-                                ["i"] = telescope_vsplit,
-                                ["o"] = telescope_hsplit,
 
                                 ["d"] = fb_actions.remove,
                                 ["y"] = fb_actions.copy,
-
                                 ["r"] = fb_actions.rename,
                                 ["a"] = fb_actions.create,
                             },
