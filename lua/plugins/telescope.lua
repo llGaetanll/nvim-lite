@@ -1,3 +1,21 @@
+local function telescope_refresh(bufnr)
+    local actions = require "telescope.actions"
+
+    actions.refresh(bufnr)
+end
+
+local function telescope_vsplit(bufnr)
+    local actions = require "telescope.actions"
+
+    actions.select_vertical(bufnr)
+end
+
+local function telescope_hsplit(bufnr)
+    local actions = require "telescope.actions"
+
+    actions.select_horizontal(bufnr)
+end
+
 return {
     {
         "nvim-telescope/telescope-file-browser.nvim",
@@ -9,6 +27,8 @@ return {
         tag = "0.1.8",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
+            local fb_actions = require "telescope".extensions.file_browser.actions
+
             require("telescope").setup({
                 defaults = {
                     selection_caret = " ",
@@ -39,12 +59,28 @@ return {
                 extensions = {
                     file_browser = {
                         theme = "dropdown",
-                        -- disables netrw and use telescope-file-browser in its place
                         hijack_netrw = true,
+                        hide_parent_dir = true,
+                        grouped = true,
+                        sorting_strategy = "ascending",
                         mappings = {
                             ["i"] = {},
                             ["n"] = {
                                 ["l"] = "select_default",
+                                ["h"] = fb_actions.goto_parent_dir,
+
+                                ["H"] = fb_actions.toggle_hidden,
+                                ["I"] = fb_actions.toggle_respect_gitignore,
+                                ["R"] = telescope_refresh,
+
+                                ["i"] = telescope_vsplit,
+                                ["o"] = telescope_hsplit,
+
+                                ["d"] = fb_actions.remove,
+                                ["y"] = fb_actions.copy,
+
+                                ["r"] = fb_actions.rename,
+                                ["a"] = fb_actions.create,
                             },
                         },
                     },
