@@ -1,4 +1,5 @@
 return {
     "windwp/nvim-autopairs", -- autocomplete parentheses, brackets, etc...
-    event = { "VeryLazy" },
+    event = "InsertEnter",
+    config = true,
 }
