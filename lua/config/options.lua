@@ -43,3 +43,10 @@ vim.cmd [[ set fillchars=eob:\ ]]
 
 -- diff now uses ╱
 vim.cmd [[ set fillchars+=diff:╱ ]]
+
+vim.api.nvim_create_autocmd("VimResized", {
+    pattern = "*",
+    callback = function()
+        vim.cmd("wincmd =")
+    end,
+})
