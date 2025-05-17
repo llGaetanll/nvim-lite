@@ -25,4 +25,3 @@ more than one buffer at a time.
 - [x] `Gitsigns` toggle hunk in keybinds doesn't actually toggle hunks
 - [x] Add lsp-specific config file support
 - [x] Only enable mouse for left click
-- [ ] Try taking out Telescope file browser. Maybe find files is all we need?
