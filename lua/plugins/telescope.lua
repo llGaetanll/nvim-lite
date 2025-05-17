@@ -58,8 +58,8 @@ return {
                     mappings = {
                         n = {
                             ["R"] = telescope_refresh,
-                            ["i"] = telescope_vsplit,
-                            ["o"] = telescope_hsplit,
+                            ["<c-i>"] = telescope_vsplit,
+                            ["<c-o>"] = telescope_hsplit,
                         },
                         i = {}
                     },
