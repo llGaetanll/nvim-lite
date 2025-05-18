@@ -18,6 +18,24 @@ more than one buffer at a time.
 - Speed (of editor and of use)
 - Out of your way (if it's on the screen, it better be *really* important)
 
+## How do I try this
+
+If you want to try this configuration without having to touch your existing one,
+a nice trick is to:
+
+1. Clone this repository somewhere on your system
+2. `ln -s /path/to/repo $HOME/.config/`
+
+Now if you run `NVIM_APPNAME="nvim-lite" nvim`, it should start with this
+config. If you end up liking it, you can even alias that last command.
+
+```
+alias nvim-lite="NVIM_APPNAME=nvim-lite nvim"
+```
+
+If you don't end up liking it, you just have to delete `$HOME/.config/nvim-lite`
+and `$HOME/.local/share/nvim-lite`.
+
 ## So how do I use this?
 
 If you're used to the vscode-like neovim interfaces, this might seem like a big
