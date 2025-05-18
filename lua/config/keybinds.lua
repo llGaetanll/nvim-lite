@@ -83,6 +83,9 @@ local keymaps = {
     { mode = "n",               keymap = "<Left>",          action = "<C-w>H",                            desc = "Move window left", },
     { mode = "n",               keymap = "<Right>",         action = "<C-w>L",                            desc = "Move window right", },
 
+    -- Paste without clobbering clipboard
+    { mode = "x",               keymap = "p",               action = "pgvy",                              desc = "Paste without clobbering clipboard", },
+
     -- Clear search highlighting
     { mode = "n",               keymap = "<Esc>",           action = ":noh<CR>",                          desc = "clear search highlight", },
 
