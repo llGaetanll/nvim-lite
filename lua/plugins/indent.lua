@@ -6,7 +6,9 @@ return {
             require("hlchunk").setup {
                 indent = {
                     enable = true,
-                    style = { vim.api.nvim_get_hl(0, { name = "Base01Fg" }) },
+                    style = {
+                        { link = "Base01Fg" },
+                    },
                 },
             }
         end,
