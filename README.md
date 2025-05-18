@@ -108,3 +108,11 @@ Theming is powered by [`llGaetanll/base16`](https://github.com/llGaetanll/base16
 - [x] Telescope files finder prevents us from closing nvim if it's the only item
 - [x] Indents don't adapt to the theme's colors
 - [x] Indent can be guessed wrong when creating a new file.
+- [ ] Custom colorschemes are great, but some colors need to be consistent
+      across themes (i.e. red for errors/diffremove, orange for
+      warnings/diffchange, green for diffadd etc..) This is a bigger issue and
+      likely needs to be addressed either in
+      [`llGaetanll/base16.nvim`](https://github.com/llGaetanll/base16.nvim) or
+      [`llGaetanll/prisma.nvim`](https://github.com/llGaetanll/prisma.nvim). In
+      the meantime, if you need a theme with "correct enough" colors,
+      `default-dark` is your friend.
