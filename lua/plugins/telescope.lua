@@ -64,6 +64,10 @@ return {
                         i = {}
                     },
                 },
+                pickers = {
+                    find_files = { theme = "dropdown" },
+                    live_grep = { theme = "ivy" }
+                },
                 extensions = {
                     file_browser = {
                         theme = "dropdown",
