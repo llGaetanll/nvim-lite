@@ -86,14 +86,29 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
 
         -- Format on save
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = event.buf,
-            callback = function()
-                vim.lsp.buf.format {
-                    filter = function(c) return c.name ~= "ts_ls" end
-                }
-            end,
-        })
+        if server_name == "ts_ls" then
+            vim.api.nvim_create_autocmd("BufWritePost", {
+                buffer = event.buf,
+                callback = function()
+                    local filepath = vim.fn.expand("%:p")
+                    vim.fn.jobstart({ "prettier", "--write", filepath }, {
+                        on_exit = function()
+                            -- Reload the buffer to show formatting changes
+                            vim.cmd("checktime")
+                        end
+                    })
+                end
+            })
+        else
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = event.buf,
+                callback = function()
+                    vim.lsp.buf.format {
+                        filter = function(c) return c.name ~= "ts_ls" end
+                    }
+                end,
+            })
+        end
     end
 })
 
