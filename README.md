@@ -68,6 +68,10 @@ This configuration comes with
 - `<leader>gr`: Reset hunk
 - `<leader>gS`: Unstage hunk
 
+## Theming
+
+Theming is powered by [`llGaetanll/base16`](https://github.com/llGaetanll/base16.nvim), which exposes the `:Theme` command.
+
 ## TODO
 - [x] A basic user guide would be nice
 - [x] `nvim-autopairs` doesn't work, parentheses, and quotes are not auto completed
@@ -77,7 +81,7 @@ This configuration comes with
 - [x] Add lsp-specific config file support
 - [x] Only enable mouse for left click
 - [x] Configure file management keybinds in Telescope file browser 
-- [ ] Document theming. Base16 is still young, but quite powerful already.
+- [x] Document theming. Base16 is still young, but quite powerful already.
 - [ ] Telescope file finder opens the file in Diffview if it's open over it
 - [ ] Put **all** keybinds in keybinds file, and export them to the right places
 - [ ] Add commit/pull/push support from inside nvim?
