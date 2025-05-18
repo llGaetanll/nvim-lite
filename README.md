@@ -82,7 +82,7 @@ Theming is powered by [`llGaetanll/base16`](https://github.com/llGaetanll/base16
 - [x] Only enable mouse for left click
 - [x] Configure file management keybinds in Telescope file browser 
 - [x] Document theming. Base16 is still young, but quite powerful already.
-- [ ] Telescope file finder opens the file in Diffview if it's open over it
+- [x] Telescope file finder opens the file in Diffview if it's open over it
 - [ ] Put **all** keybinds in keybinds file, and export them to the right places
 - [ ] Add commit/pull/push support from inside nvim?
 - [x] Indents don't adapt to the theme's colors

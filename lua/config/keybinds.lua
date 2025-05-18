@@ -32,14 +32,17 @@ local function diffview_toggle_file_history()
 end
 
 local function telescope_file_browser(opts)
+    vim.cmd [[DiffviewClose]]
     require("telescope").extensions.file_browser.file_browser(opts)
 end
 
 local function telescope_find_files(opts)
+    vim.cmd [[DiffviewClose]]
     require("telescope.builtin").find_files(opts)
 end
 
 local function telescope_live_grep(opts)
+    vim.cmd [[DiffviewClose]]
     require("telescope.builtin").live_grep(opts)
 end
 
