@@ -77,12 +77,6 @@ local keymaps = {
     { mode = "n",               keymap = "<c-h>",           action = "<C-w>h",                            desc = "Navigate to left window", },
     { mode = "n",               keymap = "<c-l>",           action = "<C-w>l",                            desc = "Navigate to right window", },
 
-    -- Move Panes
-    { mode = "n",               keymap = "<Up>",            action = "<C-w>K",                            desc = "Move window above", },
-    { mode = "n",               keymap = "<Down>",          action = "<C-w>J",                            desc = "Move window below", },
-    { mode = "n",               keymap = "<Left>",          action = "<C-w>H",                            desc = "Move window left", },
-    { mode = "n",               keymap = "<Right>",         action = "<C-w>L",                            desc = "Move window right", },
-
     -- Paste without clobbering clipboard
     { mode = "x",               keymap = "p",               action = "pgvy",                              desc = "Paste without clobbering clipboard", },
 
