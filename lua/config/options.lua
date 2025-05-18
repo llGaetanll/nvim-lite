@@ -16,6 +16,7 @@ vim.opt.smartcase = true  -- Overrides ignorecase when search includes uppercase
 vim.opt.smartindent = true -- Automatically adjusts indent for certain languages
 vim.opt.expandtab = true   -- Converts tabs to spaces
 vim.opt.tabstop = 4        -- Sets how many spaces a tab character represents
+vim.opt.shiftwidth = 4
 vim.opt.timeoutlen = 300   -- Sets wait time for mapped key sequences in milliseconds
 vim.opt.updatetime = 300   -- Controls swap file writing and plugin update frequency
 

@@ -15,7 +15,7 @@ return {
     },
     {
         "nmac427/guess-indent.nvim",
-        event = { "BufReadPre", "BufNewFile" },
+        event = { "BufWritePre", "BufReadPre", "BufNewFile" },
         config = function()
             require("guess-indent").setup {
                 auto_cmd = true,

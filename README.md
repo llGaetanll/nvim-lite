@@ -88,8 +88,4 @@ Theming is powered by [`llGaetanll/base16`](https://github.com/llGaetanll/base16
 - [ ] Format typescript files
 - [ ] Telescope files finder prevents us from closing nvim if it's the only item
 - [x] Indents don't adapt to the theme's colors
-- [ ] Indent can be guessed wrong if a new file is created and code is pasted
-      into it. Somewhere, this config defaults to 8 spaces somehow, and if
-      `GuessIndent` is not updated with the new file contents (which might be perfect
-      4 spaces code) it will fall back to 8 spaces.
-
+- [x] Indent can be guessed wrong when creating a new file.
