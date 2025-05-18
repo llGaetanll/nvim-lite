@@ -1,4 +1,4 @@
-# `nvim-plain`
+# `nvim-lite`
 A neovim config that strives to be as simple as possible, while remaining usable
 
 ## Anti Goals
@@ -10,7 +10,7 @@ Years of using these features have caused me repeated frustrations, such as:
 - Wanting to reorganize my buffer layout, moving splits to other tabs, or tabs
 to other splits, etc...
 
-`nvim-plain` is an experiment to try to take all this friction out, and still
+`nvim-lite` is an experiment to try to take all this friction out, and still
 make the best possible editor experience. I only have two eyes, I don't need
 more than one buffer at a time.
 
