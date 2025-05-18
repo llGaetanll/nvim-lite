@@ -85,6 +85,7 @@ Theming is powered by [`llGaetanll/base16`](https://github.com/llGaetanll/base16
 - [x] Telescope file finder opens the file in Diffview if it's open over it
 - [ ] Put **all** keybinds in keybinds file, and export them to the right places
 - [ ] Add commit/pull/push support from inside nvim?
+- [ ] Format typescript files
 - [x] Indents don't adapt to the theme's colors
 - [ ] Indent can be guessed wrong if a new file is created and code is pasted
       into it. Somewhere, this config defaults to 8 spaces somehow, and if
