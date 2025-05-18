@@ -84,8 +84,9 @@ Theming is powered by [`llGaetanll/base16`](https://github.com/llGaetanll/base16
 - [x] Document theming. Base16 is still young, but quite powerful already.
 - [x] Telescope file finder opens the file in Diffview if it's open over it
 - [ ] Put **all** keybinds in keybinds file, and export them to the right places
-- [ ] Add commit/pull/push support from inside nvim?
-- [ ] Format typescript files
+- [ ] Add commit/pull/push support from inside nvim? Currently using Diffview &
+      Gitsigns, can't find a good plugin just for this.
+- [x] Format typescript files
 - [x] Telescope files finder prevents us from closing nvim if it's the only item
 - [x] Indents don't adapt to the theme's colors
 - [x] Indent can be guessed wrong when creating a new file.
