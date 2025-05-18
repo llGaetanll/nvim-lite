@@ -86,6 +86,6 @@ Theming is powered by [`llGaetanll/base16`](https://github.com/llGaetanll/base16
 - [ ] Put **all** keybinds in keybinds file, and export them to the right places
 - [ ] Add commit/pull/push support from inside nvim?
 - [ ] Format typescript files
-- [ ] Telescope files finder prevents us from closing nvim if it's the only item
+- [x] Telescope files finder prevents us from closing nvim if it's the only item
 - [x] Indents don't adapt to the theme's colors
 - [x] Indent can be guessed wrong when creating a new file.

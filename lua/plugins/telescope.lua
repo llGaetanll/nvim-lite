@@ -27,10 +27,10 @@ return {
         tag = "0.1.8",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
-            -- clear FileExplorer appropriately to prevent netrw from launching on folders
-            -- netrw may or may not be loaded before telescope-find-files
-            -- conceptual credits to nvim-tree and telescope-file-browser
-            local find_files_hijack_netrw = vim.api.nvim_create_augroup("find_files_hijack_netrw", { clear = true })
+            local netrw_bufname
+
+            -- See: https://github.com/nvim-telescope/telescope-file-browser.nvim/blob/626998e5c1b71c130d8bc6cf7abb6709b98287bb/lua/telescope/_extensions/file_browser/config.lua#L73
+            pcall(vim.api.nvim_clear_autocmds, { group = "NvimLiteFindFiles" })
             vim.api.nvim_create_autocmd("VimEnter", {
                 pattern = "*",
                 once = true,
@@ -38,17 +38,29 @@ return {
                     pcall(vim.api.nvim_clear_autocmds, { group = "FileExplorer" })
                 end,
             })
-
             vim.api.nvim_create_autocmd("BufEnter", {
-                group = find_files_hijack_netrw,
+                group = vim.api.nvim_create_augroup("NvimLiteFindFiles", { clear = true }),
                 pattern = "*",
                 callback = function()
                     vim.schedule(function()
-                        -- Early return if netrw or not a directory
-                        if vim.bo[0].filetype == "netrw" or vim.fn.isdirectory(vim.fn.expand("%:p")) == 0 then
+                        if vim.bo[0].filetype == "netrw" then
+                            return
+                        end
+                        local bufname = vim.api.nvim_buf_get_name(0)
+                        if vim.fn.isdirectory(bufname) == 0 then
+                            _, netrw_bufname = pcall(vim.fn.expand, "#:p:h")
                             return
                         end
 
+                        -- prevents reopening of file-browser if exiting without selecting a file
+                        if netrw_bufname == bufname then
+                            netrw_bufname = nil
+                            return
+                        else
+                            netrw_bufname = bufname
+                        end
+
+                        -- ensure no buffers remain with the directory name
                         vim.api.nvim_buf_set_option(0, "bufhidden", "wipe")
 
                         require("telescope.builtin").find_files({
@@ -56,6 +68,7 @@ return {
                         })
                     end)
                 end,
+                desc = "telescope find files replacement for netrw",
             })
 
             local fb_actions = require "telescope".extensions.file_browser.actions
