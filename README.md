@@ -77,6 +77,8 @@ This configuration comes with
 - [x] Add lsp-specific config file support
 - [x] Only enable mouse for left click
 - [x] Configure file management keybinds in Telescope file browser 
+- [ ] Document theming. Base16 is still young, but quite powerful already.
+- [ ] Telescope file finder opens the file in Diffview if it's open over it
 - [ ] Put **all** keybinds in keybinds file, and export them to the right places
 - [ ] Add commit/pull/push support from inside nvim?
 - [ ] Indents don't adapt to the theme's colors, nor does the cmp window
