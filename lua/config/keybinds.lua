@@ -58,7 +58,113 @@ local function telescope_keymaps(opts)
     require("telescope.builtin").keymaps(opts)
 end
 
-local keymaps = {
+-- Base Telescope
+local function telescope_refresh(bufnr)
+    local actions = require "telescope.actions"
+
+    actions.refresh(bufnr)
+end
+
+local function telescope_vsplit(bufnr)
+    local actions = require "telescope.actions"
+
+    actions.select_vertical(bufnr)
+end
+
+local function telescope_hsplit(bufnr)
+    local actions = require "telescope.actions"
+
+    actions.select_horizontal(bufnr)
+end
+
+-- Telescope file browser
+local function telescope_file_browser_goto_parent_dir(bufnr)
+    local actions = require "telescope".extensions.file_browser.actions
+
+    actions.goto_parent_dir(bufnr)
+end
+
+local function telescope_file_browser_toggle_hidden(bufnr)
+    local actions = require "telescope".extensions.file_browser.actions
+
+    actions.toggle_hidden(bufnr)
+end
+
+local function telescope_file_browser_toggle_respect_gitignore(bufnr)
+    local actions = require "telescope".extensions.file_browser.actions
+
+    actions.toggle_respect_gitignore(bufnr)
+end
+
+
+local function telescope_file_browser_remove(bufnr)
+    local actions = require "telescope".extensions.file_browser.actions
+
+    actions.remove(bufnr)
+end
+
+local function telescope_file_browser_copy(bufnr)
+    local actions = require "telescope".extensions.file_browser.actions
+
+    actions.copy(bufnr)
+end
+
+local function telescope_file_browser_rename(bufnr)
+    local actions = require "telescope".extensions.file_browser.actions
+
+    actions.rename(bufnr)
+end
+
+local function telescope_file_browser_create(bufnr)
+    local actions = require "telescope".extensions.file_browser.actions
+
+    actions.create(bufnr)
+end
+
+-- LSP
+local function custom_goto_prev(severity)
+    return function()
+        vim.diagnostic.goto_prev { severity = severity }
+    end
+end
+
+local function custom_goto_next(severity)
+    return function()
+        vim.diagnostic.goto_next { severity = severity }
+    end
+end
+
+local prev_error = custom_goto_prev(vim.diagnostic.severity.ERROR)
+local next_error = custom_goto_next(vim.diagnostic.severity.ERROR)
+
+local prev_warn = custom_goto_prev(vim.diagnostic.severity.WARN)
+local next_warn = custom_goto_next(vim.diagnostic.severity.WARN)
+
+local prev_info = custom_goto_prev(vim.diagnostic.severity.INFO)
+local next_info = custom_goto_next(vim.diagnostic.severity.INFO)
+
+local next_hint = custom_goto_prev(vim.diagnostic.severity.HINT)
+local prev_hint = custom_goto_next(vim.diagnostic.severity.HINT)
+
+local lsp_implementations = function()
+    require("telescope.builtin").lsp_implementations()
+end
+
+local lsp_references = function()
+    require("telescope.builtin").lsp_references({ trim_text = true })
+end
+
+local hover = function()
+    -- Extends `vim.lsp.util.open_floating_preview.Opts`
+    vim.lsp.buf.hover {
+        max_width = 50,
+    }
+end
+
+local M = {}
+
+-- General system keybinds
+M.system = {
     -- Disable mouse right click
     { mode = { "n", "i", "v" }, keymap = "<RightMouse>",    action = "<nop>" },
 
@@ -112,7 +218,56 @@ local keymaps = {
     { mode = "n",               keymap = "<leader>uk",      action = telescope_keymaps,                   desc = "Telescope [u]til [k]eybinds", },
 }
 
--- set keymaps
-for _, km in ipairs(keymaps) do
-    vim.keymap.set(km.mode, km.keymap, km.action, { noremap = true, silent = true, desc = km.desc })
-end
+-- Telescope keybinds
+M.telescope = {
+    i = {},
+    n = {
+        R = telescope_refresh,
+        ["<c-i>"] = telescope_vsplit,
+        ["<c-o>"] = telescope_hsplit,
+    },
+}
+
+-- Telescope file browser keybinds
+M.telescope_file_browser = {
+    i = {},
+    n = {
+        l = "select_default",
+        h = telescope_file_browser_goto_parent_dir,
+        H = telescope_file_browser_toggle_hidden,
+        I = telescope_file_browser_toggle_respect_gitignore,
+
+        d = telescope_file_browser_remove,
+        y = telescope_file_browser_copy,
+        r = telescope_file_browser_rename,
+        a = telescope_file_browser_create,
+    },
+}
+
+-- LSP Keybinds
+M.lsp = {
+    { mode = "n", keymap = "gd",         action = vim.lsp.buf.definition,    desc = "[g]oto [d]efinition", },
+    { mode = "n", keymap = "K",          action = hover,                     desc = "Get object Info", },
+    { mode = "n", keymap = "gi",         action = lsp_implementations,       desc = "[g]et [i]mplementation", },
+    { mode = "n", keymap = "<leader>rn", action = vim.lsp.buf.rename,        desc = "[r]e[n]ame" },
+    { mode = "n", keymap = "gr",         action = lsp_references,            desc = "[g]et [r]eferences", },
+    { mode = "n", keymap = "<leader>ca", action = vim.lsp.buf.code_action,   desc = "[c]ode [a]ctions", },
+    { mode = "n", keymap = "<leader>e",  action = vim.diagnostic.open_float, desc = "Display info about errors", },
+
+    { mode = "n", keymap = "[d",         action = vim.diagnostic.goto_prev,  desc = "Prev Def" },
+    { mode = "n", keymap = "]d",         action = vim.diagnostic.goto_next,  desc = "Next Def" },
+
+    { mode = "n", keymap = "[e",         action = prev_error,                desc = "Prev Error" },
+    { mode = "n", keymap = "]e",         action = next_error,                desc = "Next Error" },
+
+    { mode = "n", keymap = "[w",         action = prev_warn,                 desc = "Prev Warning", },
+    { mode = "n", keymap = "]w",         action = next_warn,                 desc = "Next Warning", },
+
+    { mode = "n", keymap = "[i",         action = prev_info,                 desc = "Prev Info" },
+    { mode = "n", keymap = "]i",         action = next_info,                 desc = "Next Info" },
+
+    { mode = "n", keymap = "[h",         action = prev_hint,                 desc = "Prev Hint" },
+    { mode = "n", keymap = "]h",         action = next_hint,                 desc = "Next Hint" },
+}
+
+return M

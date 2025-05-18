@@ -53,13 +53,9 @@ as possible.
 
 *This configuration is still in its early stages, expect changes.*
 
-In general, you can find the system keybinds in the
-[keybinds](./lua/config/keybinds.lua) file, the
-[lsp](./lua/plugins/nvim-lspconfig.lua), and some more in the
-[telescope](./lua/plugins/telescope.lua) file. A summary of important bindings
-is provided below.
-
-In all of these, space is the leader key.
+In general, you can find all the system keybinds in
+[keybinds](./lua/config/keybinds.lua). Some of the more important ones are
+listed below. In all of these, space is the leader key.
 
 ### Movement
 
@@ -101,13 +97,14 @@ Theming is powered by [`llGaetanll/base16`](https://github.com/llGaetanll/base16
 - [x] Configure file management keybinds in Telescope file browser 
 - [x] Document theming. Base16 is still young, but quite powerful already.
 - [x] Telescope file finder opens the file in Diffview if it's open over it
-- [ ] Put **all** keybinds in keybinds file, and export them to the right places
-- [ ] Add commit/pull/push support from inside nvim? Currently using Diffview &
-      Gitsigns, can't find a good plugin just for this.
+- [x] Put **all** keybinds in keybinds file, and export them to the right places
 - [x] Format typescript files
 - [x] Telescope files finder prevents us from closing nvim if it's the only item
 - [x] Indents don't adapt to the theme's colors
 - [x] Indent can be guessed wrong when creating a new file.
+- [x] Disable "open in new tab" keybind in Telescope
+- [ ] Add commit/pull/push support from inside nvim? Currently using Diffview &
+      Gitsigns, can't find a good plugin just for this.
 - [ ] Custom colorschemes are great, but some colors need to be consistent
       across themes (i.e. red for errors/diffremove, orange for
       warnings/diffchange, green for diffadd etc..) This is a bigger issue and

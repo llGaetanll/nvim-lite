@@ -1,21 +1,3 @@
-local function telescope_refresh(bufnr)
-    local actions = require "telescope.actions"
-
-    actions.refresh(bufnr)
-end
-
-local function telescope_vsplit(bufnr)
-    local actions = require "telescope.actions"
-
-    actions.select_vertical(bufnr)
-end
-
-local function telescope_hsplit(bufnr)
-    local actions = require "telescope.actions"
-
-    actions.select_horizontal(bufnr)
-end
-
 return {
     {
         "nvim-telescope/telescope-file-browser.nvim",
@@ -71,7 +53,7 @@ return {
                 desc = "telescope find files replacement for netrw",
             })
 
-            local fb_actions = require "telescope".extensions.file_browser.actions
+            local keybinds = require "config.keybinds"
             require("telescope").setup({
                 defaults = {
                     selection_caret = " ",
@@ -98,14 +80,7 @@ return {
                         preview_cutoff = 120,
                     },
                     file_ignore_patterns = { "node_modules" },
-                    mappings = {
-                        n = {
-                            ["R"] = telescope_refresh,
-                            ["<c-i>"] = telescope_vsplit,
-                            ["<c-o>"] = telescope_hsplit,
-                        },
-                        i = {}
-                    },
+                    mappings = keybinds.telescope,
                 },
                 pickers = {
                     find_files = { theme = "dropdown" },
@@ -118,20 +93,7 @@ return {
                         grouped = true,
                         sorting_strategy = "ascending",
                         initial_mode = "normal",
-                        mappings = {
-                            ["i"] = {},
-                            ["n"] = {
-                                ["l"] = "select_default",
-                                ["h"] = fb_actions.goto_parent_dir,
-                                ["H"] = fb_actions.toggle_hidden,
-                                ["I"] = fb_actions.toggle_respect_gitignore,
-
-                                ["d"] = fb_actions.remove,
-                                ["y"] = fb_actions.copy,
-                                ["r"] = fb_actions.rename,
-                                ["a"] = fb_actions.create,
-                            },
-                        },
+                        mappings = keybinds.telescope_file_browser,
                     },
                 },
             })
