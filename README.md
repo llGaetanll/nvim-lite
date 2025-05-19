@@ -103,6 +103,21 @@ Theming is powered by [`llGaetanll/base16`](https://github.com/llGaetanll/base16
 - [x] Indents don't adapt to the theme's colors
 - [x] Indent can be guessed wrong when creating a new file.
 - [x] Disable "open in new tab" keybind in Telescope
+- [ ] Diffview colors on theme change appear wrong.
+      Example: Start on theme `everforest`, switch to `default-dark`. Colors
+      appear different with diffs then vs on restart.
+- [ ] Telescope file browser / live grep / file finder have keybind disparities
+      - [ ] `l` can be used in file browser to open a file but not in file finder or
+        live grep
+      - [ ] `ctrl` + `i/o` (split open) only work in file browser
+- [ ] It should be easier to see if a large project has lsp error (maybe just in
+      files that are not open)
+- [ ] Seeing the git branch in the nvim line would be nice.
+      I'm relunctant on using lualine, mostly for speed reasons.
+- [ ] Telescope find files could use something to toggle git ignore in search
+      results maybe?
+- [ ] lsp does not listen to rustfmt.toml
+- [ ] Telescope lsp references should not list the function definition
 - [ ] Add commit/pull/push support from inside nvim? Currently using Diffview &
       Gitsigns, can't find a good plugin just for this.
 - [ ] Custom colorschemes are great, but some colors need to be consistent
