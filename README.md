@@ -45,7 +45,7 @@ tree. It also tries very hard to make all the most important stuff as accessible
 as possible.
 
 1. Use the [jumplist](https://neovim.io/doc/user/motion.html#_8.-jumps).
-2. Use [telescope](https://github.com/nvim-telescope/telescope.nvim). This
+2. Use [Telescope](https://github.com/nvim-telescope/telescope.nvim). This
    configuration comes with handy [key binds](#key_bindings) for live grep, find
    files, and file browser.
 
@@ -67,7 +67,7 @@ listed below. In all of these, space is the leader key.
   - `l`: opens the file/directory
   - `h`: goes back a directory
   - `a`: creates a file in the current directory
-- `<leader>f`: Opens the default [Telescope](https://github.com/nvim-telescope/telescope.nvim) file searcher
+- `<leader>f`: Opens the default Telescope file searcher
 - `<leader>l`: Opens the default Telescope live grepper.
 
 ### Git
