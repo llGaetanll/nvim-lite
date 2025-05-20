@@ -1,54 +1,51 @@
-local servers_dir = "lsp"
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(event)
-        local client = vim.lsp.get_client_by_id(event.data.client_id)
-        local server_name = client.config.name
-
-        local server_dir = servers_dir .. "." .. server_name
-        local conf_ok, conf = pcall(require, server_dir)
-        if conf_ok then
-            client.filetypes = conf.filetypes or {}
-            client.settings = conf.settings or {}
-        end
-
-        -- LSP key bindings
-        local keybinds = require "config.keybinds"
-        for _, km in ipairs(keybinds.lsp) do
-            vim.keymap.set(
-                km.mode,
-                km.keymap,
-                km.action,
-                { buffer = event.buf, noremap = true, silent = true, desc = "[LSP]: " .. km.desc }
-            )
-        end
-
-        -- Format on save
-        if server_name == "ts_ls" then
-            vim.api.nvim_create_autocmd("BufWritePost", {
-                buffer = event.buf,
-                callback = function()
-                    local filepath = vim.fn.expand("%:p")
-                    vim.fn.jobstart({ "prettier", "--write", filepath }, {
-                        on_exit = function()
-                            -- Reload the buffer to show formatting changes
-                            vim.cmd("checktime")
-                        end
-                    })
-                end
-            })
-        else
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                buffer = event.buf,
-                callback = function()
-                    vim.lsp.buf.format {
-                        filter = function(c) return c.name ~= "ts_ls" end
-                    }
-                end,
-            })
-        end
+local function set_keybinds(bufnr)
+    local keybinds = require "config.keybinds"
+    for _, km in ipairs(keybinds.lsp) do
+        vim.keymap.set(
+            km.mode,
+            km.keymap,
+            km.action,
+            { buffer = bufnr, noremap = true, silent = true, desc = "[LSP]: " .. km.desc }
+        )
     end
-})
+end
 
+local function format_on_save(server_name, bufnr)
+    if server_name == "ts_ls" then
+        vim.api.nvim_create_autocmd("BufWritePost", {
+            buffer = bufnr,
+            callback = function()
+                local filepath = vim.fn.expand("%:p")
+                vim.fn.jobstart({ "prettier", "--write", filepath }, {
+                    on_exit = function()
+                        -- Reload the buffer to show formatting changes
+                        vim.cmd("checktime")
+                    end
+                })
+            end
+        })
+    else
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.format {
+                    filter = function(c) return c.name ~= "ts_ls" end
+                }
+            end,
+        })
+    end
+end
+
+local function on_attach(client, bufnr)
+    -- LSP key bindings
+    set_keybinds(bufnr)
+
+    -- Format on save
+    format_on_save(client.name, bufnr)
+end
+
+local servers_dir = "lsp"
+local servers = { "rust_analyzer", "lua_ls", "ts_ls", "taplo" }
 local icons = require "config.icons"
 return {
     {
@@ -69,6 +66,17 @@ return {
 
             mason.setup {}
             mason_lsp.setup {}
+
+            for _, server in ipairs(servers) do
+                local server_dir = servers_dir .. "." .. server
+                local conf_ok, conf = pcall(require, server_dir)
+                vim.lsp.config(server, {
+                    capabilities = capabilities,
+                    on_attach = on_attach,
+                    settings = conf_ok and conf.settings or nil,
+                    filetypes = conf_ok and conf.filetypes or nil
+                })
+            end
 
             vim.diagnostic.config {
                 -- disable virtual text
