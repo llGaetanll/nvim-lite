@@ -1,4 +1,5 @@
-local function set_keybinds(bufnr)
+local function on_attach(client, bufnr)
+    -- LSP key bindings
     local keybinds = require "config.keybinds"
     for _, km in ipairs(keybinds.lsp) do
         vim.keymap.set(
@@ -8,10 +9,9 @@ local function set_keybinds(bufnr)
             { buffer = bufnr, noremap = true, silent = true, desc = "[LSP]: " .. km.desc }
         )
     end
-end
 
-local function format_on_save(server_name, bufnr)
-    if server_name == "ts_ls" then
+    -- Format on save
+    if client.name == "ts_ls" then
         vim.api.nvim_create_autocmd("BufWritePost", {
             buffer = bufnr,
             callback = function()
@@ -28,24 +28,14 @@ local function format_on_save(server_name, bufnr)
         vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = bufnr,
             callback = function()
-                vim.lsp.buf.format {
-                    filter = function(c) return c.name ~= "ts_ls" end
-                }
+                vim.lsp.buf.format()
             end,
         })
     end
 end
 
-local function on_attach(client, bufnr)
-    -- LSP key bindings
-    set_keybinds(bufnr)
-
-    -- Format on save
-    format_on_save(client.name, bufnr)
-end
-
 local servers_dir = "lsp"
-local servers = { "rust_analyzer", "lua_ls", "ts_ls", "taplo" }
+local servers = { "rust_analyzer", "lua_ls", "ts_ls" }
 local icons = require "config.icons"
 return {
     {
