@@ -114,6 +114,9 @@ Theming is powered by [`llGaetanll/base16`](https://github.com/llGaetanll/base16
       - [ ] `l` can be used in file browser to open a file but not in file finder or
         live grep
       - [ ] `ctrl` + `i/o` (split open) should work in every telescope picker, in normal and insert mode
+- [ ] Telescope (and Telescope plugins) come with default keybinds that would
+      better be removed.
+- [ ] Telescope lsp references comes displays both file and line contents in results pane, but should show only the file
 - [ ] Seeing the git branch in the nvim line would be nice. (`lualine` fixes this)
 - [ ] Telescope find files could use something to toggle git ignore in search
       results maybe?
