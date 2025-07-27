@@ -106,16 +106,15 @@ Theming is powered by [`llGaetanll/base16`](https://github.com/llGaetanll/base16
 - [x] lsp does not listen to rustfmt.toml.
       Sadly, this requires us to load a list of configs for preset servers. Ok
       for my use-case but not very elegant.
-- [ ] It should be easier to see if and where a large project has lsp error
+- [ ] It should be easier to see if and where a large project has lsp error (`lualine` would improve this for the open buffer)
 - [ ] Currently, this config folds at level 9, but I'd prefer if it never folded
 - [ ] Diffview breaks when you start it from the initial file finder
 - [ ] Telescope lsp references should not list the function definition
 - [ ] Telescope file browser / live grep / file finder have keybind disparities
       - [ ] `l` can be used in file browser to open a file but not in file finder or
         live grep
-      - [ ] `ctrl` + `i/o` (split open) only work in file browser
-- [ ] Seeing the git branch in the nvim line would be nice.
-      I'm relunctant on using lualine, mostly for speed reasons.
+      - [ ] `ctrl` + `i/o` (split open) should work in every telescope picker, in normal and insert mode
+- [ ] Seeing the git branch in the nvim line would be nice. (`lualine` fixes this)
 - [ ] Telescope find files could use something to toggle git ignore in search
       results maybe?
 - [ ] Diffview colors on theme change appear wrong.
