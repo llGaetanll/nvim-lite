@@ -65,8 +65,6 @@ return {
                         "i",
                         "s",
                     }),
-
-                    ["<A-y>"] = require('minuet').make_cmp_map()
                 },
                 formatting = {
                     fields = { "kind", "abbr", "menu" },
@@ -107,7 +105,6 @@ return {
                             menu = {
                                 nvim_lsp = "[lsp]",
                                 nvim_lua = "[lua]",
-                                minuet = "[minuet]",
                                 luasnip = "[luasnip]",
                                 npm = "[npm]",
                                 buffer = "[buf]",
