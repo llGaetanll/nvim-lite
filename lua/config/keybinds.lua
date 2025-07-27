@@ -151,7 +151,7 @@ local lsp_implementations = function()
 end
 
 local lsp_references = function()
-    require("telescope.builtin").lsp_references({ trim_text = true })
+    require("telescope.builtin").lsp_references({ trim_text = true, include_declaration = false, })
 end
 
 local hover = function()

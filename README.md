@@ -109,7 +109,7 @@ Theming is powered by [`llGaetanll/base16`](https://github.com/llGaetanll/base16
 - [ ] It should be easier to see if and where a large project has lsp error (`lualine` would improve this for the open buffer)
 - [ ] Currently, this config folds at level 9, but I'd prefer if it never folded
 - [ ] Diffview breaks when you start it from the initial file finder
-- [ ] Telescope lsp references should not list the function definition
+- [x] Telescope lsp references should not list the function definition
 - [ ] Telescope file browser / live grep / file finder have keybind disparities
       - [ ] `l` can be used in file browser to open a file but not in file finder or
         live grep
