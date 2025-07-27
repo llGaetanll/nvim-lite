@@ -29,7 +29,7 @@ end
 return function(theme)
     local colors = gen_colors(theme)
 
-    local fixes = { "cmp", "dressing", "misc", "telescope" }
+    local fixes = { "cmp", "snacks", "misc", "telescope" }
     local groups = util.merge_groups(fixes, colors)
 
     util.set_highlights(groups)
