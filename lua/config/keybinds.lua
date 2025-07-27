@@ -163,6 +163,12 @@ end
 
 local M = {}
 
+-- Neovim keybinds that collide with our custom keybinds in some way
+M.remove = {
+    'grn', 'gri', 'grr', 'grt', 'gra', -- LSP
+    'gc', 'gb'                         -- Comments
+}
+
 -- General system keybinds
 M.system = {
     -- Disable mouse right click
