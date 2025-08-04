@@ -174,53 +174,54 @@ M.system = {
     { mode = { "n", "i", "v" }, keymap = "<RightMouse>",    action = "<nop>" },
 
     -- WhichKey
-    { mode = "n",               keymap = "<leader><Space>", action = "<cmd>WhichKey<CR>",                 desc = "List all keybinds", },
+    { mode = "n",               keymap = "<leader><Space>", action = "<cmd>WhichKey<CR>",                     desc = "List all keybinds", },
 
     -- Resize panes
-    { mode = "n",               keymap = "<C-Up>",          action = "<cmd>resize -2<CR>",                desc = "Resize windows", },
-    { mode = "n",               keymap = "<C-Down>",        action = "<cmd>resize +2<CR>",                desc = "Resize windows", },
-    { mode = "n",               keymap = "<C-Left>",        action = "<cmd>vertical resize -2<CR>",       desc = "Resize windows", },
-    { mode = "n",               keymap = "<C-Right>",       action = "<cmd>vertical resize +2<CR>",       desc = "Resize windows", },
+    { mode = "n",               keymap = "<C-Up>",          action = "<cmd>resize -2<CR>",                    desc = "Resize windows", },
+    { mode = "n",               keymap = "<C-Down>",        action = "<cmd>resize +2<CR>",                    desc = "Resize windows", },
+    { mode = "n",               keymap = "<C-Left>",        action = "<cmd>vertical resize -2<CR>",           desc = "Resize windows", },
+    { mode = "n",               keymap = "<C-Right>",       action = "<cmd>vertical resize +2<CR>",           desc = "Resize windows", },
 
     -- Navigate Panes
-    { mode = "n",               keymap = "<c-k>",           action = "<C-w>k",                            desc = "Navigate to window above", },
-    { mode = "n",               keymap = "<c-j>",           action = "<C-w>j",                            desc = "Navigate to window below", },
-    { mode = "n",               keymap = "<c-h>",           action = "<C-w>h",                            desc = "Navigate to left window", },
-    { mode = "n",               keymap = "<c-l>",           action = "<C-w>l",                            desc = "Navigate to right window", },
+    { mode = "n",               keymap = "<c-k>",           action = "<C-w>k",                                desc = "Navigate to window above", },
+    { mode = "n",               keymap = "<c-j>",           action = "<C-w>j",                                desc = "Navigate to window below", },
+    { mode = "n",               keymap = "<c-h>",           action = "<C-w>h",                                desc = "Navigate to left window", },
+    { mode = "n",               keymap = "<c-l>",           action = "<C-w>l",                                desc = "Navigate to right window", },
 
     -- Paste without clobbering clipboard
-    { mode = "x",               keymap = "p",               action = "pgvy",                              desc = "Paste without clobbering clipboard", },
+    { mode = "x",               keymap = "p",               action = "pgvy",                                  desc = "Paste without clobbering clipboard", },
 
     -- Clear search highlighting
-    { mode = "n",               keymap = "<Esc>",           action = ":noh<CR>",                          desc = "clear search highlight", },
+    { mode = "n",               keymap = "<Esc>",           action = ":noh<CR>",                              desc = "clear search highlight", },
 
     -- Stay in visual mode after indenting
-    { mode = "v",               keymap = "<",               action = "<gv",                               desc = "indent less", },
-    { mode = "v",               keymap = ">",               action = ">gv",                               desc = "indent more", },
+    { mode = "v",               keymap = "<",               action = "<gv",                                   desc = "indent less", },
+    { mode = "v",               keymap = ">",               action = ">gv",                                   desc = "indent more", },
 
     -- Copy to system clipboard in visual/visual block mode
-    { mode = "v",               keymap = "<c-y>",           action = '"+y',                               desc = "copy to system clipboard", },
-    { mode = "x",               keymap = "<c-y>",           action = '"+y',                               desc = "copy to system clipboard", },
+    { mode = "v",               keymap = "<c-y>",           action = '"+y',                                   desc = "copy to system clipboard", },
+    { mode = "x",               keymap = "<c-y>",           action = '"+y',                                   desc = "copy to system clipboard", },
 
     -- Diffview
-    { mode = "n",               keymap = "<leader>dd",      action = diffview_toggle_open,                desc = "Diffview Toggle", },
-    { mode = "n",               keymap = "<leader>dr",      action = "<cmd>DiffviewRefresh<CR>",          desc = "[D]iffview [R]efresh", },
-    { mode = "n",               keymap = "<leader>dh",      action = diffview_toggle_file_history,        desc = "[D]iffview File [H]istory", },
+    { mode = "n",               keymap = "<leader>dd",      action = diffview_toggle_open,                    desc = "Diffview Toggle", },
+    { mode = "n",               keymap = "<leader>dr",      action = "<cmd>DiffviewRefresh<CR>",              desc = "[D]iffview [R]efresh", },
+    { mode = "n",               keymap = "<leader>dh",      action = diffview_toggle_file_history,            desc = "[D]iffview File [H]istory", },
 
     -- Gitsigns
-    { mode = "n",               keymap = "[g",              action = "<cmd>Gitsigns prev_hunk<CR>",       desc = "[g]it Previous Hunk", },
-    { mode = "n",               keymap = "]g",              action = "<cmd>Gitsigns next_hunk<CR>",       desc = "[g]it Next Hunk", },
-    { mode = "n",               keymap = "<leader>gs",      action = "<cmd>Gitsigns stage_hunk<CR>",      desc = "[g]it [s]tage hunk", },
-    { mode = "n",               keymap = "<leader>gr",      action = "<cmd>Gitsigns reset_hunk<CR>",      desc = "[g]it [r]eset hunk", },
-    { mode = "n",               keymap = "<leader>gS",      action = "<cmd>Gitsigns undo_stage_hunk<CR>", desc = "[g]it undo [S]tage hunk", },
+    { mode = "n",               keymap = "[g",              action = "<cmd>Gitsigns prev_hunk<CR>",           desc = "[g]it Previous Hunk", },
+    { mode = "n",               keymap = "]g",              action = "<cmd>Gitsigns next_hunk<CR>",           desc = "[g]it Next Hunk", },
+    { mode = "n",               keymap = "<leader>gs",      action = "<cmd>Gitsigns stage_hunk<CR>",          desc = "[g]it [s]tage hunk", },
+    { mode = "n",               keymap = "<leader>gr",      action = "<cmd>Gitsigns reset_hunk<CR>",          desc = "[g]it [r]eset hunk", },
+    { mode = "n",               keymap = "<leader>gS",      action = "<cmd>Gitsigns undo_stage_hunk<CR>",     desc = "[g]it undo [S]tage hunk", },
+    { mode = "n",               keymap = "<leader>gp",      action = "<cmd>Gitsigns preview_hunk_inline<CR>", desc = "[g]it [p]review hunk", },
 
     -- Telescope
-    { mode = "n",               keymap = "<leader>t",       action = telescope_file_browser,              desc = "Telescope File Browser", },
-    { mode = "n",               keymap = "<leader>f",       action = telescope_find_files,                desc = "Telescope [f]ile Search", },
-    { mode = "n",               keymap = "<leader>l",       action = telescope_live_grep,                 desc = "Telescope [l]ive Grep", },
-    { mode = "n",               keymap = "<leader>ut",      action = telescope_help_tags,                 desc = "Telescope [u]itl help [t]ags", },
-    { mode = "n",               keymap = "<leader>uh",      action = telescope_highlights,                desc = "Telescope [u]til [h]ighlights", },
-    { mode = "n",               keymap = "<leader>uk",      action = telescope_keymaps,                   desc = "Telescope [u]til [k]eybinds", },
+    { mode = "n",               keymap = "<leader>t",       action = telescope_file_browser,                  desc = "Telescope File Browser", },
+    { mode = "n",               keymap = "<leader>f",       action = telescope_find_files,                    desc = "Telescope [f]ile Search", },
+    { mode = "n",               keymap = "<leader>l",       action = telescope_live_grep,                     desc = "Telescope [l]ive Grep", },
+    { mode = "n",               keymap = "<leader>ut",      action = telescope_help_tags,                     desc = "Telescope [u]itl help [t]ags", },
+    { mode = "n",               keymap = "<leader>uh",      action = telescope_highlights,                    desc = "Telescope [u]til [h]ighlights", },
+    { mode = "n",               keymap = "<leader>uk",      action = telescope_keymaps,                       desc = "Telescope [u]til [k]eybinds", },
 }
 
 -- Telescope keybinds
