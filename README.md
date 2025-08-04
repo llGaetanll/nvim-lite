@@ -106,6 +106,8 @@ Theming is powered by [`llGaetanll/base16`](https://github.com/llGaetanll/base16
 - [x] lsp does not listen to rustfmt.toml.
       Sadly, this requires us to load a list of configs for preset servers. Ok
       for my use-case but not very elegant.
+- [ ] If Telescope get-references only finds one usage for an item, it should
+      not even open the menu, but jump to the location of the item.
 - [ ] It should be easier to see if and where a large project has lsp error (`lualine` would improve this for the open buffer)
 - [ ] Currently, this config folds at level 9, but I'd prefer if it never folded
 - [ ] Diffview breaks when you start it from the initial file finder
