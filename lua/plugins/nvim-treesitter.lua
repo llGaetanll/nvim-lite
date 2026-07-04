@@ -1,21 +1,21 @@
--- See: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation
+-- See: https://github.com/nvim-treesitter/nvim-treesitter (main branch)
+local languages = { "rust", "lua", "javascript", "typescript", "tsx" }
+local filetypes = { "rust", "lua", "javascript", "typescript", "typescriptreact" }
+
 return {
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = "main",
+        lazy = false,
         build = ":TSUpdate",
-        event = { "VeryLazy" },
-        opts = {
-            autopairs = {
-                enable = true
-            }
-        },
         config = function()
-            local configs = require("nvim-treesitter.configs")
+            require("nvim-treesitter").install(languages)
 
-            configs.setup({
-                sync_install = false,
-                highlight = { enable = true },
-                indent = { enable = true },
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = filetypes,
+                callback = function()
+                    vim.treesitter.start()
+                end,
             })
         end
     }
