@@ -54,7 +54,9 @@ return {
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
-            mason.setup {}
+            if not mason.has_setup then
+                mason.setup {}
+            end
             mason_lsp.setup {}
 
             for _, server in ipairs(servers) do
