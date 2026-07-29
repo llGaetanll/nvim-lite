@@ -3,8 +3,7 @@
 -- The main branch builds parsers from source and needs the `tree-sitter` CLI
 -- on PATH. We install it through mason (into nvim's data dir) so nothing has to
 -- be installed system-wide: mason.setup() prepends its bin dir to nvim's PATH.
-local languages = { "rust", "lua", "javascript", "typescript", "tsx" }
-local filetypes = { "rust", "lua", "javascript", "typescript", "typescriptreact" }
+local languages = { "rust", "lua", "javascript", "typescript", "tsx", "yuck" }
 
 return {
     {
@@ -21,9 +20,12 @@ return {
 
             -- Highlighting only (indentation handled elsewhere).
             vim.api.nvim_create_autocmd("FileType", {
-                pattern = filetypes,
-                callback = function()
-                    vim.treesitter.start()
+                pattern = "*",
+                callback = function(args)
+                    if vim.bo[args.buf].buftype ~= "" then
+                        return
+                    end
+                    pcall(vim.treesitter.start, args.buf)
                 end,
             })
 
